@@ -6,7 +6,13 @@ public class CalorieRecord extends MyRecord {
 
     private int weight;   //g
 
-    private double calorie;
+    private int calorie;
+
+    public CalorieRecord(String food, int weight, int calorie){
+        this.food = food;
+        this.weight = weight;
+        this.calorie = calorie;
+    }
 
     public String getFood() {
         return food;
@@ -24,11 +30,11 @@ public class CalorieRecord extends MyRecord {
         this.weight = weight;
     }
 
-    public double getCalorie() {
+    public int getCalorie() {
         return calorie;
     }
 
-    public void setCalorie(double calorie) {
+    public void setCalorie(int calorie) {
         this.calorie = calorie;
     }
 }
