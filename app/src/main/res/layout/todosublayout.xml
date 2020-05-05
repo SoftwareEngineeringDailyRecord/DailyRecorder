@@ -19,19 +19,20 @@
             >
 
             <ImageView
-                android:id="@+id/image_food"
+                android:id="@+id/image_todo"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:src="@drawable/calorie"
+                android:src="@drawable/todo"
                 />
 
             <Button
-                android:id="@+id/button_more_calorie"
+                android:id="@+id/button_more_todo"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/more"
                 />
+
 
         </RelativeLayout>
 
@@ -45,15 +46,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="食物："
+                android:text="事件："
                 android:textColor="#000000"
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/text_food"
+                android:id="@+id/text_todo_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="蔬菜水果"
+                android:text="最新会议"
                 android:textColor="#8B8878"
                 android:textSize="20sp"/>
 
@@ -69,15 +70,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="重量："
+                android:text="Tag："
                 android:textColor="#000000"
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/text_weight"
+                android:id="@+id/text_todo_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="200g"
+                android:text="会议"
                 android:textColor="#8B8878"
                 android:textSize="20sp"/>
 
@@ -90,23 +91,24 @@
             android:layout_margin="5dp">
 
             <TextView
-                android:id="@+id/text_calorie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="500"
-                android:textSize="75sp"
-                android:layout_margin="5dp"
-                android:gravity="center_horizontal"
-                android:textColor="#5CACEE"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="卡路里"
+                android:text="To-do时间为"
                 android:textColor="#8B8878"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
                 />
+
+            <TextView
+                android:id="@+id/text_todo_date_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2020年7月12日"
+                android:textSize="40sp"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:textColor="#FFD700"/>
+
 
 
         </LinearLayout>

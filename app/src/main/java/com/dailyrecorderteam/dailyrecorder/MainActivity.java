@@ -4,32 +4,55 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.graphics.ColorSpace;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.litepal.crud.DataSupport;
+import org.litepal.tablemanager.Connector;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private List<CalorieRecord> mCalorirList = new ArrayList<>();
+    private List<MyRecord> mMyList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecordAdapter adapter;
+    private Button editButton;
+    private TextView dateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.mainactivitylayout);
+        Connector.getDatabase();
         init();
+
+        editButton = (Button) findViewById(R.id.button_edit);
+
+        dateText = (TextView) findViewById(R.id.text_date);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
+
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new RecordAdapter(mCalorirList);
+        adapter = new RecordAdapter(mMyList,MainActivity.this);
         recyclerView.setAdapter(adapter);
+
+        editButton.setOnClickListener(this);
+
+        dateText.setText(getTime());
     }
 
-    private void init1(){
+    /*private void init1(){
         CalorieRecord cr1 = new CalorieRecord("香蕉",100,30);
         mCalorirList.add(cr1);
         CalorieRecord cr2 = new CalorieRecord("橘子",120,50);
@@ -43,12 +66,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CalorieRecord cr6 = new CalorieRecord("牛奶",150,20);
         mCalorirList.add(cr6);
 
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()):
-
+        switch (v.getId()){
+            case R.id.button_edit:
+                switchEditStage();
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -62,7 +90,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 只从calorie数据库取数据，初始化List No 2.2
      */
     public void init(){
-
+        mMyList.clear();
+        List<BigdayRecord> bigdayRecordList = DataSupport.where("bigDayTime > ?",String.valueOf(TimeOperator.getNowTime())).find(BigdayRecord.class);
+        for(BigdayRecord record:bigdayRecordList){
+            mMyList.add((MyRecord)record);
+        }
+        List<TodoRecord> todoRecordList = DataSupport.where("doTime > ?",String.valueOf(TimeOperator.getNowTime())).find(TodoRecord.class);
+        for(TodoRecord record:todoRecordList){
+            mMyList.add((MyRecord)record);
+        }
     }
 
     /**
@@ -70,5 +106,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @return 返回的数据格式为2018年7月19日 No 2.3
      */
     public String getTime(){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DATE);
+        return String.valueOf(year)+"年"+String.valueOf(month+1)+"月"+String.valueOf(day)+"日";
+    }
+
+    public void switchEditStage(){
+        Intent intent = new Intent(MainActivity.this, SelectionActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        init();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        init();
+        adapter.notifyDataSetChanged();
     }
 }

@@ -5,12 +5,16 @@
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CalorieAddActivity"></activity>
+        <activity android:name=".TodoChanger"></activity>
+        <activity android:name=".BigDayChanger" />
+        <activity android:name=".TodoEditor" />
+        <activity android:name=".BigDayEditor" />
+        <activity android:name=".CalorieEditor" />
         <activity android:name=".SelectionActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

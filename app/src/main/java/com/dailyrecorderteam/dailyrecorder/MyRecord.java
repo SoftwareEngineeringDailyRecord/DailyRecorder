@@ -2,7 +2,13 @@ package com.dailyrecorderteam.dailyrecorder;
 
 import org.litepal.crud.DataSupport;
 
-public abstract class MyRecord extends DataSupport {
+import java.io.Serializable;
+
+public abstract class MyRecord extends DataSupport implements Serializable {
+
+    static public final int CALORIE_RECORD = 1;
+    static public final int BIGDAY_RECORD = 2;
+    static public final int TODO_RECORD = 3;
 
     private int id;
 
@@ -16,7 +22,11 @@ public abstract class MyRecord extends DataSupport {
 
     private int hour;
 
+    private int minute;
+
     private int second;
+
+    private int type;
 
     public int getId() {
         return id;
@@ -72,5 +82,21 @@ public abstract class MyRecord extends DataSupport {
 
     public void setSecond(int second) {
         this.second = second;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }
