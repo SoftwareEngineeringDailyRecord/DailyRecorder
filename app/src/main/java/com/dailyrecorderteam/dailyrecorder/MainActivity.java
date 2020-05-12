@@ -95,8 +95,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for(BigdayRecord record:bigdayRecordList){
             mMyList.add((MyRecord)record);
         }
+
         List<TodoRecord> todoRecordList = DataSupport.where("doTime > ?",String.valueOf(TimeOperator.getNowTime())).find(TodoRecord.class);
         for(TodoRecord record:todoRecordList){
+            mMyList.add((MyRecord)record);
+        }
+
+        List<CalorieRecord> calorieRecordList = DataSupport.findAll(CalorieRecord.class);
+        for(CalorieRecord record:calorieRecordList){
             mMyList.add((MyRecord)record);
         }
     }

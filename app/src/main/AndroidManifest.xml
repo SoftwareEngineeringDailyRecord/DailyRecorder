@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".TodoChanger"></activity>
         <activity android:name=".BigDayChanger" />
+        <activity android:name=".CalorieChanger" />
         <activity android:name=".TodoEditor" />
         <activity android:name=".BigDayEditor" />
         <activity android:name=".CalorieEditor" />

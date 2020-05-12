@@ -96,10 +96,10 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/calorie_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OK"
         android:layout_margin="10dp"
-        />
+        android:text="OK" />
 
 </LinearLayout>

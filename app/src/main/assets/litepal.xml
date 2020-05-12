@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value = "UserRecords"></dbname>
-    <version value = "2"></version>
+    <version value = "3"></version>
 
     <list>
         <mapping class = "com.dailyrecorderteam.dailyrecorder.BigdayRecord"></mapping>
         <mapping class = "com.dailyrecorderteam.dailyrecorder.TodoRecord"></mapping>
+        <mapping class = "com.dailyrecorderteam.dailyrecorder.CalorieRecord"></mapping>
     </list>
 </litepal>
